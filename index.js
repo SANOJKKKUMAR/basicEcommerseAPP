@@ -1,20 +1,25 @@
 const express = require('express');
 const app = express();
 const port = 3000;
-const userRoutes = require('./routeFile/user');
-const productRoutes = require('./routeFile/product');
-const cartRoutes = require('./routeFile/cart');
+// const userRoutes = require('./controller/user');
+// const productRoutes = require('./controller/product');
+// const cartRoutes = require('./controller/cart');
+
+
+const {userList}=require('./controller/user')
+const {productList}=require('./controller/product')
+const {cartProduct}=require('./controller/cart')
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
 
-app.use('/cart', cartRoutes);
+app.use('/cart', cartProduct);
 
-app.use('/product', productRoutes);
+app.use('/product', productList);
 
-app.use('/user', userRoutes);
+app.use('/user', userList);
 
 
 
